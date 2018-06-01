@@ -1,0 +1,8 @@
+01 Jul 2018 - Installed json-server to create a fake REST API server (https://github.com/typicode/json-server)
+			- Created a Github repo to sync the project (https://github.com/jsphkhan/react-user-management-app)
+
+			- Installed ESLInt through npm - https://eslint.org/docs/user-guide/getting-started
+
+			- created a project directory user-management using create-react-app
+
+			- Installed react-router-dom for Routing. https://reacttraining.com/react-router/web/guides/quick-start
