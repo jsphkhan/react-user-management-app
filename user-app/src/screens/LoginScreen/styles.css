@@ -1,0 +1,11 @@
+body {
+	background: steelblue;
+}
+
+.login-box {
+	border: 1px solid tomato;
+	padding: 50px;
+	margin: 50px auto;
+	width: 400px;
+	background: white;
+}

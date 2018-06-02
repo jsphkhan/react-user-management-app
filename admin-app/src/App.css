@@ -1,0 +1,45 @@
+/* Common Styles at App level */
+.btn-primary {
+  margin-top: 30px;
+  height: 45px;
+}
+
+.form-control {
+  height: 50px;
+}
+
+.text-danger {
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.lead {
+	font-weight: 500 !important;
+}
+
+.label {
+	display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+.label-danger {
+    background-color: #d9534f;
+}
+
+p.text-success, p.text-danger {
+  margin-top: 20px;
+  text-align: center;
+}

@@ -1,0 +1,38 @@
+.navbar.navbar-inverse {
+	background: linear-gradient(-90deg, #37B0B2, #3196CC);
+	-webkit-box-shadow: 0px 3px 5px rgba(100, 100, 100, 0.49);
+    -moz-box-shadow: 0px 3px 5px rgba(100, 100, 100, 0.49);
+    box-shadow: 0px 3px 5px rgba(100, 100, 100,0.49);
+    margin-bottom: 30px;
+}
+.navbar.navbar-inverse .navbar-brand {
+	color: #fff;
+}
+.left-box {
+	background-color: tomato;
+}
+
+div.main-content-wrapper {
+	background: #fff;
+}
+.admin-menu ul li {
+    padding: 10px;
+    border: 1px solid #ececec;
+    margin-bottom: -1px;
+    list-style-type: none;
+}
+
+.admin-menu ul li a {
+	text-decoration: none;
+    color: grey;
+}
+.admin-menu ul li a.selected {
+	color: steelblue;
+}
+table tbody {
+    background: #fff;
+    border: 1px solid #ddd;
+}
+h3.hello-admin {
+    margin-bottom: 20px;
+}

@@ -1,0 +1,22 @@
+
+ul.user-list li.user-item {
+	list-style-type: none;
+	padding: 15px;
+	border: 1px solid #ddd;
+	background: white;
+	margin-bottom: 15px;
+	border-radius: 5px;
+	cursor: pointer;
+	background: #f8f8f8;
+	box-sizing: border-box;
+}
+
+ul.user-list p {
+	margin: 0;
+	margin-bottom: .2rem;
+}
+
+ul.user-list p.user-item-header {
+	font-weight: 500;
+	font-size: 1.1rem;
+}
