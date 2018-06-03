@@ -1,13 +1,23 @@
 # Project Title
 
-React User Management App
+React Simple User Management App
 
 ## Description
-Simple User Management App created with React JS. Uses fake json-server data to create, update, delete and authenticate users. This repository has 3 foldders
+Simple User Management App created with React JS. Has the following features
+1. Authenticating user with username and password
+2. Create, update, and delete user
+3. See the user detail
+
+This demo uses fake json-server data to create, update, delete and authenticate users. This repository has 3 folders,
 * admin-app : The Admin Management App interface. Admin can create, view, update and delete users. This app was created using [create-react-app](https://github.com/facebook/create-react-app) starter kit
 * user-app : The User App interface. User can only login and see his details. For simplicity of the demo, the actions are restircted. This app was created using [create-react-app](https://github.com/facebook/create-react-app) start kit.
 * fake-server : fake json-server folder which has a db.json file. All related data are inside the json file. Read more about json-server [here](https://github.com/typicode/json-server).
 
+### Prerequisites
+
+* NodeJS v6.10.3 and up - Install Node JS from its [download page](https://nodejs.org/en/download/).
+* NPM (Node package manager) - npm is installed along with NodeJS. My version at the time of commit was v6.0.1.
+* yarn - yarn is considered faster than npm. If you do not want to use npm commands then you can use yarn. Installation instructions can be found [here](https://yarnpkg.com/lang/en/).
 
 ## Getting Started and Installing
 
@@ -39,7 +49,9 @@ $ npm install
 * This should install all the dependencies. Once done
 * Run 
 ``` 
-yarn start or npm start
+$ yarn start
+or
+$ npm start
 ```
 * to start the server.
 * open (http://localhost:3000) in your browser. 
@@ -55,7 +67,9 @@ $ npm install
 * This should install all the dependencies. Once done
 * Run 
 ``` 
-yarn start or npm start
+$ yarn start 
+or 
+$ npm start
 ```
 * to start the server.
 * open (http://localhost:3001) in your browser. User App is configured to run in port 3001. If you want to change, you can do so inside package.json
@@ -68,10 +82,6 @@ yarn start or npm start
 * There are already few fake users created. You can login with one of them (john/yahoo@123). You can see all of them inside the fake-server/db.json file.
 * You can create more users from the Admin App and then login inside the User App.
 
-### Prerequisites
-
-* NodeJS v6.10.3 and up, NPM. Install Node JS from its [ddownload page](https://nodejs.org/en/download/)
-* 
 
 ### Demo
 
@@ -90,8 +100,26 @@ yarn start or npm start
 -- Open for improvement --
 
 ## Deployment
-yarn build to generate the production version. And then deploy
-Add additional notes about how to deploy this on a live system
+#### Generating Production build for admin-app
+```
+$ cd admin-app
+$ npm run build
+or
+$ yarn build
+```
+
+#### Generating Production build for user-app
+```
+$ cd user-app
+$ npm run build
+or
+$ yarn build
+```
+Builds both the apps for production into their respective build folders.
+It correctly bundles React in production mode and optimizes the build (eg. admin-app/build) for the best performance.
+
+#### Deployment to live server (eg. Heroku)
+In progress
 
 ## Built With
 
@@ -105,8 +133,9 @@ Please read [CONTRIBUTING.md](https://github.com/jsphkhan/react-user-management-
 
 ## Known Issues/Limitations
 
-* Lacks a proper authentication and authorization model. 
-json-server is a fake REST API server and as such its functionalities are limited.
+* Lacks a proper authentication and authorization model. json-server is a fake REST API server and as such its functionalities are limited. This can be improved when used with a proper NodeJS backend.
+* The intention of this project is to create a React boilerplate that can be used for learning purpose.
+* 
 
 ## Authors
 
