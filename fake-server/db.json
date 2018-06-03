@@ -53,6 +53,14 @@
       "firstname": "kjklj",
       "lastname": "kljkljlkjkl",
       "id": 6
+    },
+    {
+      "username": "jkhan",
+      "password": "test@123",
+      "email": "joseph@yahoo.com",
+      "firstname": "Joseph",
+      "lastname": "K",
+      "id": 7
     }
   ]
 }
