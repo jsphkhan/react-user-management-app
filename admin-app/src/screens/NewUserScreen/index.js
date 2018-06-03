@@ -11,67 +11,8 @@ export default class NewUserScreen extends Component {
 		email: '',
 		firstname: '',
 		lastname: '',
-		loading: false,
 		message: '',
 		actionStatus: ''
-	}
-	fetchUser() {
-		//make a GET call to check if user already exists
-		//for our demo, we will match email only.
-		//unique users have unique email
-		//better handling of these scenarios can be done using proper NodeJS scripts
-
-		let {email} = this.state,
-			dbUrl = `${config.baseUrl}:${config.dbPort}`,
-			configuredUrl = `${dbUrl}/users?email=${email.toLowerCase()}`;
-
-		fetch(configuredUrl, {
-			method: 'GET',
-		}).then((response) => {
-			return response.json();
-		}).then((responseJson) => {
-			//responseJson coming is an array
-			if(responseJson.length === 0) {
-				console.log('All Good');
-				this.createUser();
-			} else {
-				//an user is found. has to be 1 user
-				console.log('User Already Exists');
-			}
-		}).catch((err) => {
-			console.log('Error: ', err);
-		});
-	}
-	createUser() {
-		let dbUrl = `${config.baseUrl}:${config.dbPort}`,
-			configuredUrl = `${dbUrl}/users`,
-			{username, password, email, firstname, lastname} = this.state;
-
-		this.setState({loading: true});
-		fetch(configuredUrl, {
-			method: 'POST',
-			headers: {
-				'Content-Type' : 'application/json'
-			},
-			body: JSON.stringify({
-				username: username,
-				password: password,
-				email: email.toLowerCase(),
-				firstname: firstname,
-				lastname: lastname
-			})
-		}).then((response) => {
-			return response.json();
-		}).then((responseJson) => {
-			//check if user is created successfully
-			if(typeof responseJson === 'object' && responseJson.username === this.state.username) {
-				this.setState({loading: false, actionStatus: 'success', message: 'User Created Successfully. Click/Tap on All Users to see'});
-			} else {
-				throw Error();
-			}
-		}).catch((err) => {
-			this.setState({loading: false, actionStatus: 'fail', message: "User could not be created due to some error."});
-		});
 	}
 	validateInput() {
 		let {username, password, repassword, email, firstname, lastname} = this.state;
@@ -103,6 +44,64 @@ export default class NewUserScreen extends Component {
 			return false;
 		}
 		return true;
+	}
+	fetchUser() {
+		//make a GET call to check if user already exists
+		//for our demo, we will match email only.
+		//unique users have unique email
+		//better handling of these scenarios can be done using proper NodeJS scripts
+
+		let {email} = this.state,
+			dbUrl = `${config.baseUrl}:${config.dbPort}`,
+			configuredUrl = `${dbUrl}/users?email=${email.toLowerCase()}`;
+
+		fetch(configuredUrl, {
+			method: 'GET',
+		}).then((response) => {
+			return response.json();
+		}).then((responseJson) => {
+			//responseJson coming is an array
+			if(responseJson.length === 0) {
+				//user not found. Go ahead and create
+				this.createUser();
+			} else {
+				//an existing user is found.
+				this.setState({actionStatus: 'fail', message: "User with same email already exists!"});
+
+			}
+		}).catch((err) => {
+			this.setState({actionStatus: 'fail', message: "User could not be created due to some error."});
+		});
+	}
+	createUser() {
+		let dbUrl = `${config.baseUrl}:${config.dbPort}`,
+			configuredUrl = `${dbUrl}/users`,
+			{username, password, email, firstname, lastname} = this.state;
+
+		fetch(configuredUrl, {
+			method: 'POST',
+			headers: {
+				'Content-Type' : 'application/json'
+			},
+			body: JSON.stringify({
+				username: username,
+				password: password,
+				email: email.toLowerCase(),
+				firstname: firstname,
+				lastname: lastname
+			})
+		}).then((response) => {
+			return response.json();
+		}).then((responseJson) => {
+			//check if user is created successfully
+			if(typeof responseJson === 'object' && responseJson.username === this.state.username) {
+				this.setState({actionStatus: 'success', message: 'User Created Successfully. Click/Tap on All Users to see'});
+			} else {
+				throw Error();
+			}
+		}).catch((err) => {
+			this.setState({actionStatus: 'fail', message: "User could not be created due to some error."});
+		});
 	}
 	handleSubmit() {
 		if(this.validateInput()) {

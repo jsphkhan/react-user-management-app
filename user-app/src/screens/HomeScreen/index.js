@@ -9,16 +9,12 @@ export default class HomeScreen extends Component {
 	state = {
 		redirectToLogin: false
 	}
-	constructor(props) {
-		super(props);
-		console.log(props);
-	}
 	handleLogout() {
 		this.setState({redirectToLogin: true});
 	}
 	render() {
 		const {redirectToLogin} = this.state;
-		const {email, fullname, picture, username} = this.props.location.state.data;
+		const {email, firstname, lastname, id, username} = this.props.location.state.data;
 
 		if(redirectToLogin) {
 			return <Redirect to={{
@@ -26,11 +22,45 @@ export default class HomeScreen extends Component {
 			}} />;
 		}
 		return (
-			<div className="home-box">
-				<button onClick={this.handleLogout.bind(this)}>Logout</button>
-				<h3>Hello {username}</h3>
-				<p>{fullname}</p>
-				<p>{email}</p>
+			<div>
+				<nav className="navbar navbar-inverse navbar-fixed-top">
+					<div className="container">
+						<div className="navbar-header">
+							<a className="navbar-brand" href="#">
+								ReactJS User App
+							</a>
+						</div>
+			          <ul className="nav navbar-nav navbar-right">
+			            <li><a href="#" className="logout-btn" onClick={this.handleLogout.bind(this)}>Logout</a></li>
+			          </ul>
+					</div>
+				</nav>
+				<div className="container main-content-wrapper">
+					<h3 className="hello-admin">Hello {username}</h3>
+
+					<p className="lead">Your Details: </p>
+					<hr/>
+					<table className="table table-striped table-hover">
+				    	<tbody>
+							<tr>
+								<td>Name: </td>
+								<td>{firstname} {lastname}</td>
+							</tr>
+							<tr>
+								<td>ID: </td>
+								<td>{id}</td>
+							</tr>
+							<tr>
+								<td>Email: </td>
+								<td>{email}</td>
+							</tr>
+							<tr>
+								<td>Username: </td>
+								<td>{username}</td>
+							</tr>
+				    	</tbody>
+				  	</table>
+				</div>
 			</div>
 		);
 	}

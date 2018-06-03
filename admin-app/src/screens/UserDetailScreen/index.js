@@ -176,7 +176,7 @@ export default class UserDetailScreen extends Component {
 					<p className="lead">Edit User</p>
 					<hr/>				
 					<div className="form-group">
-						<label for="firstName">Firstname</label>
+						<label htmlFor="firstName">Firstname</label>
 		        		<input
 		        			id="firstName"
 		        			type="text" 
@@ -192,7 +192,7 @@ export default class UserDetailScreen extends Component {
 		    				}} />
 					</div>
 					<div className="form-group">
-						<label for="lastName">Lastname</label>
+						<label htmlFor="lastName">Lastname</label>
 		        		<input 
 		        			idd="lastName"
 		        			type="text" 
@@ -207,7 +207,7 @@ export default class UserDetailScreen extends Component {
 		    				}} />
 					</div>
 					<div className="form-group">
-						<label for="email">Email</label>
+						<label htmlFor="email">Email</label>
 		        		<input 
 		        			id="email"
 		        			type="email" 

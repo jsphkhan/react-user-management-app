@@ -34,8 +34,11 @@ export default class HomeScreen extends Component {
 					<nav className="navbar navbar-inverse navbar-fixed-top">
 						<div className="container">
 							<div className="navbar-header">
-								<a className="navbar-brand" href="#">
+								<a className="navbar-brand large-layout" href="#">
 									ReactJS User Management App
+								</a>
+								<a className="navbar-brand small-layout" href="#">
+									RUMA
 								</a>
 							</div>
 				          <ul className="nav navbar-nav navbar-right">

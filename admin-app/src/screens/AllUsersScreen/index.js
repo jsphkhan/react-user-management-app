@@ -54,8 +54,8 @@ export default class AllUsersScreen extends Component {
 								return (
 									<li className="user-item" onClick={() => {this.openDetailScreen(item)}} key={index} id={item.id}>
 										<p className="user-item-header">{item.firstname} {item.lastname}</p>
-										<p className="text-muted">{item.email}</p>
-										<p className="text-muted">ID: {item.id}</p>
+										<p className="text-muted user-email">{item.email}</p>
+										<p className="text-muted user-id">ID: {item.id}</p>
 									</li>
 								);
 							})}

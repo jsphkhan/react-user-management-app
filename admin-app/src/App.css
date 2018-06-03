@@ -19,11 +19,11 @@ ul {
 	list-style-type: none;
 }
 
-.lead {
+p.lead {
 	font-weight: 500 !important;
 }
 
-.label {
+span.label {
 	display: inline;
     padding: .2em .6em .3em;
     font-size: 75%;
@@ -35,7 +35,7 @@ ul {
     vertical-align: baseline;
     border-radius: .25em;
 }
-.label-danger {
+span.label-danger {
     background-color: #d9534f;
 }
 
@@ -48,4 +48,16 @@ p.field-instruction {
   color: #bbb;
   margin: 0;
   font-size: 0.7rem;
+}
+nav.navbar-fixed-top {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  top: 0;
+  border-width: 0 0 1px;
+  min-height: 56px;
+}
+div.main-content-wrapper {
+  margin-top: 70px;
 }

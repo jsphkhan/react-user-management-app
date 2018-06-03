@@ -40,3 +40,48 @@ table tbody {
 h3.hello-admin {
     margin-bottom: 20px;
 }
+
+/* Media Queries */
+@media only screen and (max-width: 768px) {
+    .navbar.navbar-inverse {
+        margin-bottom: 20px;
+    }
+    .navbar.navbar-inverse .navbar-brand.large-layout {
+        display: none;
+    }
+    .navbar.navbar-inverse .container {
+        padding: 0;
+    }
+    h3.hello-admin {
+        display: none;
+    }
+
+    .admin-menu {
+        margin-bottom: 20px;
+    }
+    
+    .admin-menu ul li {
+        padding: 5px 0;
+        display: inline-block;
+        border-radius: 100px;
+        list-style-type: none;
+        margin-right: 10px;
+        text-align: center;
+    }
+
+    .admin-menu ul li a {
+        text-decoration: none;
+        padding: 8px 25px;
+        color: grey;
+        border-radius: 100px;
+        background: linear-gradient(-90deg, #37B0B2, #3196CC);
+    }
+    .admin-menu ul li a.selected {
+        color: #fff;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .navbar.navbar-inverse .navbar-brand.small-layout {
+        display: none;
+    }
+}

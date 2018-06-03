@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import './styles.css';
-
-import config from '../../config';
-import validate from '../../utils/validate';
-
 import {
   Redirect
 } from 'react-router-dom';
+import config from '../../config';
+import validate from '../../utils/validate';
+
 
 export default class LoginScreen extends Component {
 	state = {
@@ -16,9 +15,6 @@ export default class LoginScreen extends Component {
 		redirectToHome: false,
 		userData: null
 	}
-	constructor(props) {
-		super(props);
-	}
 	handleValidation(usernameVal, passwordVal) {
 		if(validate.isEmpty(usernameVal) || validate.isEmpty(passwordVal)) {
 			this.setState({loginMessage: 'Fields cannot be empty'});
@@ -27,14 +23,13 @@ export default class LoginScreen extends Component {
 		return true;
 	}
 	handleLogin() {
-		let username = this.state.username,
-			password = this.state.password;
-		//validate the user and then
+		let {username, password} = this.state;
+
+		//validate
 		if(!this.handleValidation(username, password)) {
 			return;
 		}
 
-		//make the login call
 		let dbUrl = `${config.baseUrl}:${config.dbPort}`,
 			configuredUrl = `${dbUrl}/users?username=${username}&password=${password}`;
 
@@ -56,16 +51,17 @@ export default class LoginScreen extends Component {
 			} else {
 				//an user is found. has to be 1 user
 				if(responseJson.length === 1) {
-					//console.log('Success Login: ', responseJson);
-					//redirect to home
+					//redirect to home and pass necessary data
 					this.setState({
 						redirectToHome: true,
 						userData: responseJson[0]
 					});
+				} else {
+					throw Error();
 				}
 			}
 		}).catch((err) => {
-			console.log('Error: ', err);
+			this.setState({loginMessage: 'Could not log you in ddue to some error'});
 		});
 	}
 	render() {
@@ -79,35 +75,40 @@ export default class LoginScreen extends Component {
 		}
 
 		return (
-			<div className="login-box">
-				<div>
-					<input 
-						type="text" 
-						name="username" 
-						placeholder="Username"
-						onChange={(e) => {
-							this.setState({
-								username: e.currentTarget.value,
-								loginMessage: ''
-							});
-						}} />
-				</div>
-				<div>
-	        		<input 
-	        			type="password" 
-	    				name="password" 
-	    				placeholder="Password"
-	    				onChange={(e) => {
-	    					this.setState({
-	    						password: e.currentTarget.value,
-	    						loginMessage: ''
-	    					})
-	    				}} />
-				</div>
-				<button 
-					onClick={this.handleLogin.bind(this)}>Login</button>
+			<div className="row">
+				<div className="login-box col-md-4 offset-md-4">
+					<p className="lead text-center">User Login</p>
+					<div className="form-group">
+						<input 
+							type="text" 
+							className="form-control"
+							placeholder="Username"
+							onChange={(e) => {
+								this.setState({
+									username: e.currentTarget.value,
+									loginMessage: ''
+								});
+							}} />
+					</div>
+					<div className="form-group">
+		        		<input 
+		        			type="password" 
+		        			className="form-control"
+		    				placeholder="Password"
+		    				onChange={(e) => {
+		    					this.setState({
+		    						password: e.currentTarget.value,
+		    						loginMessage: ''
+		    					})
+		    				}} />
+					</div>
+					<button 
+						type="button"
+						className="btn btn-primary btn-block"
+						onClick={this.handleLogin.bind(this)}>Login</button>
 
-				<p>{this.state.loginMessage}</p>
+					<p className="text-danger text-center">{this.state.loginMessage}</p>
+				</div>
 			</div>
 		);
 	}

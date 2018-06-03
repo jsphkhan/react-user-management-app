@@ -20,3 +20,10 @@ ul.user-list p.user-item-header {
 	font-weight: 500;
 	font-size: 1.1rem;
 }
+
+/* Media Queries */
+@media only screen and (max-width: 768px) {
+	p.user-email, p.user-id {
+		display: none;
+	}
+}
