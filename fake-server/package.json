@@ -1,0 +1,15 @@
+{
+  "name": "restful-api",
+  "version": "1.0.0",
+  "description": "A fake RESTful API for testing purposes, ready to deploy to services like Heroku/Now",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "joseph",
+  "license": "MIT",
+  "dependencies": {
+    "json-server": "^0.13.0"
+  }
+}
