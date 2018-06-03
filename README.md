@@ -153,6 +153,11 @@ You can deploy to [Now](https://zeit.co/now#whats-now) or [Heroku](https://dashb
 $ cd build
 $ now --name react-admin-app
 ```
+You can deploy your fake json server as well. Here's how I did,
+```
+$ cd fake-server
+$ now --name fake-json-server
+```
 But before deploying directly to Now, you need to install their command line tool or Desktop application and login. 
 
 ## Live Demo (eg. Now)
