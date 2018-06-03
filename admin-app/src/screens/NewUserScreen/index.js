@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
-//import './styles.css';
+
 import config from '../../config';
+import validate from '../../utils/validate';
 
 export default class NewUserScreen extends Component {
 	state = {
 		username: '',
 		password: '',
+		repassword: '',
 		email: '',
 		firstname: '',
 		lastname: '',
 		loading: false,
-		//dataArr: [],
-		message: ""
+		message: '',
+		actionStatus: ''
 	}
 	fetchUser() {
 		//make a GET call to check if user already exists
-		//for our demo, we will match email only
+		//for our demo, we will match email only.
+		//unique users have unique email
 		//better handling of these scenarios can be done using proper NodeJS scripts
 
-		let {username, email} = this.state,
+		let {email} = this.state,
 			dbUrl = `${config.baseUrl}:${config.dbPort}`,
-			configuredUrl = `${dbUrl}/users?email=${email}`;
+			configuredUrl = `${dbUrl}/users?email=${email.toLowerCase()}`;
 
 		fetch(configuredUrl, {
 			method: 'GET',
@@ -41,7 +44,8 @@ export default class NewUserScreen extends Component {
 	}
 	createUser() {
 		let dbUrl = `${config.baseUrl}:${config.dbPort}`,
-			configuredUrl = `${dbUrl}/users`;
+			configuredUrl = `${dbUrl}/users`,
+			{username, password, email, firstname, lastname} = this.state;
 
 		this.setState({loading: true});
 		fetch(configuredUrl, {
@@ -50,28 +54,60 @@ export default class NewUserScreen extends Component {
 				'Content-Type' : 'application/json'
 			},
 			body: JSON.stringify({
-				username: this.state.username,
-				password: this.state.password,
-				email: this.state.email,
-				firstname: this.state.firstname,
-				lastname: this.state.lastname
+				username: username,
+				password: password,
+				email: email.toLowerCase(),
+				firstname: firstname,
+				lastname: lastname
 			})
 		}).then((response) => {
 			return response.json();
 		}).then((responseJson) => {
-			console.log(responseJson);
 			//check if user is created successfully
 			if(typeof responseJson === 'object' && responseJson.username === this.state.username) {
-				console.log('user created successfully');
-				this.setState({loading: false, message: 'User Created Successfully. Click/Tap on All Users to see'});
+				this.setState({loading: false, actionStatus: 'success', message: 'User Created Successfully. Click/Tap on All Users to see'});
+			} else {
+				throw Error();
 			}
 		}).catch((err) => {
-			console.log('Error: ', err);
-			this.setState({loading: false, message: "User could not be loaded due to some error."});
+			this.setState({loading: false, actionStatus: 'fail', message: "User could not be created due to some error."});
 		});
 	}
+	validateInput() {
+		let {username, password, repassword, email, firstname, lastname} = this.state;
+		
+		if(validate.isEmpty(username) || validate.isEmpty(password) || validate.isEmpty(email) || validate.isEmpty(firstname) || validate.isEmpty(lastname)) {
+			this.setState({actionStatus: 'fail', message: 'Fields cannot be empty'});
+		    return false;
+		}
+		//new password not a valid password
+		if(!validate.isValidPassword(password)) {
+			this.setState({actionStatus: 'fail', message: 'Password is not valid'});
+		    return false;
+		}
+		//passwords do not match
+        if(password !== repassword) {
+        	this.setState({actionStatus: 'fail', message: 'Passwords do not match'});
+            return false;
+        }
+		if(!validate.isValidEmail(email)) {
+			this.setState({actionStatus: 'fail', message: 'Email is not valid'});
+			return false;
+		}
+		if(!validate.isStringOnly(firstname)) {
+			this.setState({actionStatus: 'fail', message: 'First Name should be only characters'});
+			return false;
+		}
+		if(!validate.isStringOnly(lastname)) {
+			this.setState({actionStatus: 'fail', message: 'Last Name should be only characters'});
+			return false;
+		}
+		return true;
+	}
 	handleSubmit() {
-		this.fetchUser();
+		if(this.validateInput()) {
+			this.fetchUser();
+		}
 	}
 	render() {
 		return (
@@ -91,6 +127,8 @@ export default class NewUserScreen extends Component {
 						}} />
 				</div>
 				<div className="form-group">
+					<p className="field-instruction">** Minimum 4 chars and maximum 15 chars long.</p>
+					<p className="field-instruction">** Should have at least a letter, a number and a special character</p>
 	        		<input 
 	        			type="password" 
 	        			className="form-control"
@@ -98,6 +136,18 @@ export default class NewUserScreen extends Component {
 	    				onChange={(e) => {
 	    					this.setState({
 	    						password: e.currentTarget.value,
+	    						message: ''
+	    					})
+	    				}} />
+				</div>
+				<div className="form-group">
+	        		<input 
+	        			type="password" 
+	        			className="form-control"
+	    				placeholder="Re-Enter Password"
+	    				onChange={(e) => {
+	    					this.setState({
+	    						repassword: e.currentTarget.value,
 	    						message: ''
 	    					})
 	    				}} />
@@ -142,7 +192,7 @@ export default class NewUserScreen extends Component {
 					type="button"
 					className="btn btn-primary btn-block"
 					onClick={this.handleSubmit.bind(this)}>Submit</button>
-				<p className="text-danger text-center">{this.state.message}</p>
+				<p className={(this.state.actionStatus === 'success') ? "text-success" : "text-danger"}>{this.state.message}</p>
 			</div>
 		);
 	}

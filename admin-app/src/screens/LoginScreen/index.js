@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import './styles.css';
-
-import config from '../../config';
-import validate from '../../utils/validate';
-
 import {
   Redirect
 } from 'react-router-dom';
+import config from '../../config';
+import validate from '../../utils/validate';
+
 
 export default class LoginScreen extends Component {
 	state = {
@@ -16,9 +15,6 @@ export default class LoginScreen extends Component {
 		redirectToHome: false,
 		userData: null
 	}
-	constructor(props) {
-		super(props);
-	}
 	handleValidation(usernameVal, passwordVal) {
 		if(validate.isEmpty(usernameVal) || validate.isEmpty(passwordVal)) {
 			this.setState({loginMessage: 'Fields cannot be empty'});
@@ -27,15 +23,13 @@ export default class LoginScreen extends Component {
 		return true;
 	}
 	handleLogin() {
-		let username = this.state.username,
-			password = this.state.password;
+		let {username, password} = this.state;
 
 		//validate
 		if(!this.handleValidation(username, password)) {
 			return;
 		}
 
-		//make the login call
 		let dbUrl = `${config.baseUrl}:${config.dbPort}`,
 			configuredUrl = `${dbUrl}/admin?username=${username}&password=${password}`;
 
@@ -57,7 +51,6 @@ export default class LoginScreen extends Component {
 			} else {
 				//an user is found. has to be 1 user
 				if(responseJson.length === 1) {
-					//console.log('Success Login: ', responseJson);
 					//redirect to home
 					this.setState({
 						redirectToHome: true,
@@ -75,7 +68,6 @@ export default class LoginScreen extends Component {
 		if(redirectToHome) {
 			return <Redirect to={{
 				pathname: '/admin/users',
-				//state: {data: userData}
 			}} />;
 		}
 

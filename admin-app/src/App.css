@@ -43,3 +43,9 @@ p.text-success, p.text-danger {
   margin-top: 20px;
   text-align: center;
 }
+
+p.field-instruction {
+  color: #bbb;
+  margin: 0;
+  font-size: 0.7rem;
+}

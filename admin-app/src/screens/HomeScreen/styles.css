@@ -8,6 +8,10 @@
 .navbar.navbar-inverse .navbar-brand {
 	color: #fff;
 }
+.navbar .logout-btn {
+    cursor: pointer;
+    color: #fff;
+}
 .left-box {
 	background-color: tomato;
 }

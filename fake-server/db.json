@@ -7,36 +7,28 @@
   ],
   "users": [
     {
-      "username": "jkhan",
-      "password": "hjk",
-      "email": "jkhan@gmail.com",
+      "username": "jsph",
+      "password": "hello@123",
+      "email": "joseph@gmail.com",
       "firstname": "Joseph",
-      "lastname": "Kha",
+      "lastname": "Khan",
       "id": 1
     },
     {
-      "username": "amit",
-      "password": "kljkljklj",
-      "email": "amit@yahoo.com",
-      "firstname": "Amit",
-      "lastname": "Kumar",
+      "username": "john",
+      "password": "yahoo@123",
+      "email": "john@hotmail.com",
+      "firstname": "John",
+      "lastname": "Doe",
       "id": 2
     },
     {
-      "username": "kjklj",
-      "password": "kljklj",
-      "email": "jkhan1@gmail.com",
-      "firstname": "Joseph",
-      "lastname": "khan",
-      "id": 6
-    },
-    {
-      "username": "",
-      "password": "",
-      "email": "",
-      "firstname": "",
-      "lastname": "",
-      "id": 7
+      "username": "smarion",
+      "password": "test@123",
+      "email": "smary@yahoo.com",
+      "firstname": "Samantha",
+      "lastname": "Marion",
+      "id": 3
     }
   ]
 }

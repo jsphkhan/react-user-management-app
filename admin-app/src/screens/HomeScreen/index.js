@@ -4,7 +4,6 @@ import './styles.css';
 import {
 	BrowserRouter as Router,
   	Redirect,
-  	Link,
   	NavLink,
 	Route,
 	Switch
@@ -18,15 +17,11 @@ export default class HomeScreen extends Component {
 	state = {
 		redirectToLogin: false
 	}
-	constructor(props) {
-		super(props);
-	}
 	handleLogout() {
 		this.setState({redirectToLogin: true});
 	}
 	render() {
 		const {redirectToLogin} = this.state;
-		//const {email, fullname, picture, username} = this.props.location.state.data;
 
 		if(redirectToLogin) {
 			return <Redirect to={{
@@ -44,7 +39,7 @@ export default class HomeScreen extends Component {
 								</a>
 							</div>
 				          <ul className="nav navbar-nav navbar-right">
-				            <li><a onClick={this.handleLogout.bind(this)}>Logout</a></li>
+				            <li><a href="#" className="logout-btn" onClick={this.handleLogout.bind(this)}>Logout</a></li>
 				          </ul>
 						</div>
 					</nav>
