@@ -76,9 +76,14 @@ yarn start or npm start
 ### Demo
 
 #### Admin App
-![Demo](533853198cdc9f93520048b961c5cf99.gif)
+###### Admin Login
+![Demo](screenshots/533853198cdc9f93520048b961c5cf99.gif)
+
+###### Create User
+![Demo](screenshots/463b1d9e637b2742edc1d4f920f068d5.gif)
 
 #### User App
+![Demo](screenshots/1c88c36dc79482a23a7df6b2e1534871.gif)
 
 
 ## Running the tests
