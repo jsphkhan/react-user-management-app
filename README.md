@@ -40,7 +40,7 @@ These instructions will get you a copy of the project up and running on your loc
 NodeJS v6.10.3 and up, NPM
 
 ```
-Install Node JS from https://nodejs.org/en/download/
+Install Node JS from [NodeJs download page](https://nodejs.org/en/download/)
 ```
 
 ### Installing
