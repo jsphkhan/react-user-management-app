@@ -8,7 +8,7 @@
 .navbar.navbar-inverse .navbar-brand {
 	color: #fff;
 }
-.navbar .logout-btn {
+.navbar.navbar-inverse .logout-btn {
     cursor: pointer;
     color: #fff;
 }

@@ -63,7 +63,7 @@ export default class LoginScreen extends Component {
 		});
 	}
 	render() {
-		const {redirectToHome, userData} = this.state;
+		const {redirectToHome} = this.state;
 
 		if(redirectToHome) {
 			return <Redirect to={{

@@ -109,7 +109,7 @@ export default class UserDetailScreen extends Component {
 		this.setState({editMode: true});
 	}
 	componentDidMount() {
-		let {email, username, firstname, lastname, id} = this.props.location.state;
+		let {email, firstname, lastname} = this.props.location.state;
 		this.setState({
 			updatedFirstName: firstname, 
 			originalFirstName: firstname,

@@ -11,7 +11,7 @@
       "password": "hello@123",
       "email": "joseph@gmail.com",
       "firstname": "Joseph",
-      "lastname": "Khan1",
+      "lastname": "Khan",
       "id": 1
     },
     {
@@ -29,38 +29,6 @@
       "firstname": "Samantha",
       "lastname": "Marion",
       "id": 3
-    },
-    {
-      "username": "kljlkjl",
-      "password": "test@123",
-      "email": "joseph1@gmail.com",
-      "firstname": "khjkhjkh",
-      "lastname": "jhjkhjkhkj",
-      "id": 4
-    },
-    {
-      "username": "jljlj",
-      "password": "11@123k",
-      "email": "kjkjkl@lkjlkj.c",
-      "firstname": "jhjkhhjk",
-      "lastname": "jkhjkhjkhjkh",
-      "id": 5
-    },
-    {
-      "username": "k;k;lk;",
-      "password": "test@123",
-      "email": "kjlkjl@lkjlkj.c",
-      "firstname": "kjklj",
-      "lastname": "kljkljlkjkl",
-      "id": 6
-    },
-    {
-      "username": "jkhan",
-      "password": "test@123",
-      "email": "joseph@yahoo.com",
-      "firstname": "Joseph",
-      "lastname": "K",
-      "id": 7
     }
   ]
 }
