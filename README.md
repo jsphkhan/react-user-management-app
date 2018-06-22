@@ -163,7 +163,7 @@ But before deploying directly to Now, you need to install their command line too
 ## Live Demo (eg. Now)
 I have deployed the applications into Now servers. Why I chose Now over Heroku? - because I found Now easier to deploy my app.
 Here are the live demo URL's:
-* Admin App : [https://react-admin-app-tnpcfpugif.now.sh/](https://react-admin-app-tnpcfpugif.now.sh/)
+* Admin App (login with admin/admin@123) : [https://react-admin-app-tnpcfpugif.now.sh/](https://react-admin-app-tnpcfpugif.now.sh/)
 * User App : [https://react-user-app-gafefwrjje.now.sh/](https://react-user-app-gafefwrjje.now.sh/)
 * Fake JSON Server : [https://fake-json-server-mpszeqeyaf.now.sh/](https://fake-json-server-mpszeqeyaf.now.sh/)
 
